@@ -8,14 +8,10 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     messages: [],
-    error: false,
   },
   mutations: {
     ADD_MESSAGE(state, message) {
       state.messages.push(message);
-    },
-    SET_ERROR(state, value) {
-      state.error = value;
     },
   },
   actions: {
