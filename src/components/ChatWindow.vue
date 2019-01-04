@@ -8,7 +8,7 @@
       )
 
     chat-window-input(
-      :sendToSocket="send"
+      @input="send(e.value)"
     )
 </template>
 
@@ -33,7 +33,6 @@ export default {
   methods: {
     ...mapActions(['addMessage']),
     scrollChatWindowToBottom() {
-      console.log('scrollChatWindowToBottom');
       this.$refs.messagesWrapper.scrollTo(0, this.$refs.messagesWrapper.scrollHeight);
     },
     send(messageObject) {
@@ -41,10 +40,13 @@ export default {
     },
   },
   watch: {
-    messages() {
-      this.$nextTick(() => {
-        this.scrollChatWindowToBottom();
-      });
+    messages: {
+      handler() {
+        this.$nextTick(() => {
+          this.scrollChatWindowToBottom();
+        });
+      },
+      immediate: false,
     },
   },
 };

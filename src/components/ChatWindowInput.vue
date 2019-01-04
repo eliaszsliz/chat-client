@@ -25,19 +25,13 @@
 <script>
 export default {
   name: 'ChatWindowInput',
-  props: {
-    sendToSocket: {
-      type: Function,
-      required: true,
-    },
-  },
   data() {
     return {
       message: {
         author: '',
         body: '',
       },
-      isValid: false,
+      isValid: true,
     };
   },
   methods: {
@@ -49,7 +43,7 @@ export default {
       this.isValid = this.valid();
 
       if (this.isValid) {
-        this.sendToSocket(this.message);
+        this.$emit('input', { ...this.message });
         this.message.body = '';
       }
     },
