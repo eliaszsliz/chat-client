@@ -11,7 +11,6 @@ export default {
     },
     handleMessageRecieve(event) {
       const message = JSON.parse(event.data);
-      console.log('Dostaje wioadpmpsc:', message);
       this.addMessage(message);
     },
     handleSocketOpen() {
