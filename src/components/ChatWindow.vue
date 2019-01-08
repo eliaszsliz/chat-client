@@ -8,7 +8,7 @@
       )
 
     chat-window-input(
-      @input="send(e.value)"
+      @input="send"
     )
 </template>
 
